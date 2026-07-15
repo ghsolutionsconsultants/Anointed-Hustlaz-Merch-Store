@@ -7,11 +7,6 @@ import { ProductCard } from "./product-card";
 
 const FILTERS = ["All", ...COLLECTIONS] as const;
 
-// give the grid an editorial rhythm: every 5th item runs wide
-function spanFor(index: number): string {
-  return index % 5 === 0 ? "wide tall" : "";
-}
-
 export function ShopBrowser() {
   const params = useSearchParams();
   const c = params.get("c");
@@ -54,9 +49,14 @@ export function ShopBrowser() {
       </nav>
 
       <div className="grid-ed">
-        {products.map((p, i) => (
-          <ProductCard key={p.slug} product={p} className={spanFor(i)} />
-        ))}
+        {products.map((p, i) =>
+          // lead each collection with a full-width editorial feature
+          i === 0 && products.length > 2 ? (
+            <ProductCard key={p.slug} product={p} variant="feature" />
+          ) : (
+            <ProductCard key={p.slug} product={p} className="tall" />
+          ),
+        )}
       </div>
     </>
   );

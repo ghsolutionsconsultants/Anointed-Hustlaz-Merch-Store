@@ -25,8 +25,8 @@ export const COLLECTIONS: Collection[] = [
 ];
 
 // Curated editorial imagery (swapped for Sean's own photography in Phase B).
-const img = (id: string, w = 1200) =>
-  `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`;
+const img = (id: string, w = 1600) =>
+  `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=82`;
 
 export const PRODUCTS: Product[] = [
   {

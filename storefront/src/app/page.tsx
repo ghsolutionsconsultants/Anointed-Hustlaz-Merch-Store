@@ -7,9 +7,11 @@ import { Magnetic } from "@/components/magnetic";
 import { CountUp } from "@/components/count-up";
 
 const HERO =
-  "https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?auto=format&fit=crop&w=2000&q=80";
+  "https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?auto=format&fit=crop&w=2200&q=82";
+const CAMPAIGN =
+  "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=2200&q=82";
 const STUDIO =
-  "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1800&q=80";
+  "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=2000&q=82";
 
 const STUDIO_URL = "https://studio.anointedhustlaz.store";
 
@@ -85,11 +87,35 @@ export default function Home() {
           </Link>
         </div>
         <div className="grid-ed">
-          <ProductCard product={feat[0]} className="wide tall" />
-          <ProductCard product={feat[1]} className="wide tall" />
-          {feat.slice(2, 5).map((p) => (
-            <ProductCard key={p.slug} product={p} />
+          <ProductCard product={feat[0]} variant="feature" />
+          {feat.slice(1, 5).map((p) => (
+            <ProductCard key={p.slug} product={p} className="tall" />
           ))}
+        </div>
+      </section>
+
+      {/* CAMPAIGN BAND — large editorial image */}
+      <section className="campaign">
+        <div className="campaign-media">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={CAMPAIGN} alt="AnointedHustlaz Winter ’26 campaign" />
+        </div>
+        <div className="campaign-copy">
+          <span className="label kick">Winter ’26</span>
+          <MaskText as="h2">
+            Worn in. <em>Never worn out.</em>
+          </MaskText>
+          <Reveal>
+            <p>
+              Heavyweight cotton that softens with every wear and holds its
+              shape through the seasons. Made to become yours.
+            </p>
+          </Reveal>
+          <Magnetic>
+            <Link href="/shop" className="btn btn-ghost">
+              <span>Shop the drop</span>
+            </Link>
+          </Magnetic>
         </div>
       </section>
 
