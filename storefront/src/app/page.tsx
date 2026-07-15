@@ -182,7 +182,7 @@ export default function Home() {
           <img src={STUDIO} alt="AnointedHustlaz Studio" />
         </Reveal>
         <div className="container studio-in">
-          <span className="label studio-tag">✦ &nbsp;The Studio &nbsp;✦</span>
+          <span className="label studio-tag">The Studio</span>
           <MaskText as="h2" className="display">
             The lens behind <em>the label.</em>
           </MaskText>

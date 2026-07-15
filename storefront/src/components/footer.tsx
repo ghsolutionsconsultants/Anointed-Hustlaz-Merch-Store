@@ -59,7 +59,7 @@ export function Footer() {
       </div>
       <div className="container footer-bottom">
         <span>© {new Date().getFullYear()} AnointedHustlaz</span>
-        <span>Made in Mzansi 🇿🇦</span>
+        <span>Made in Mzansi</span>
       </div>
     </footer>
   );

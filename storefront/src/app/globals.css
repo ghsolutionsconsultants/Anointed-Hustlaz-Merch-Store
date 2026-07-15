@@ -206,7 +206,7 @@ button { font-family: inherit; cursor: pointer; }
 .strip { border-block: 1px solid var(--line); overflow: hidden; padding-block: 16px; background: var(--surface); }
 .marquee { display: flex; width: max-content; animation: slide 34s linear infinite; }
 .marquee span { font-family: var(--font-display); font-size: 20px; letter-spacing: 0.02em; color: var(--muted); display: inline-flex; align-items: center; padding-inline: 24px; }
-.marquee span::after { content: "✦"; color: var(--accent); font-size: 11px; margin-left: 48px; }
+.marquee span::after { content: "·"; color: var(--accent); font-size: 16px; margin-left: 48px; }
 @keyframes slide { to { transform: translateX(-50%); } }
 
 /* ---------- lookbook split ---------- */
@@ -301,7 +301,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 @media (max-width: 760px) {
   .nav-links { display: none; }
-  .header-in { grid-template-columns: auto 1fr auto; }
+  /* keep the base 1fr auto 1fr grid so the logo stays screen-centred */
   .brand { justify-self: center; }
   .card, .card.wide { grid-column: span 6; }
   .card.tall .card-media { aspect-ratio: 4 / 5; }
