@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ThemeToggle } from "./theme-toggle";
 import { CartButton } from "./cart-button";
@@ -5,8 +8,17 @@ import { CartButton } from "./cart-button";
 const STUDIO_URL = "https://studio.anointedhustlaz.store";
 
 export function Header() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <header className="header">
+    <header className={`header${scrolled ? " scrolled" : ""}`}>
       <div className="header-in">
         <nav className="nav-links" aria-label="Primary">
           <Link href="/shop" className="link-underline">

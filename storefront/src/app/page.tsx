@@ -2,13 +2,15 @@ import Link from "next/link";
 import { featured, byCollection } from "@/lib/mock-products";
 import { ProductCard } from "@/components/product-card";
 import { Reveal } from "@/components/reveal";
+import { MaskText } from "@/components/mask-text";
+import { Magnetic } from "@/components/magnetic";
+import { CountUp } from "@/components/count-up";
 
 const HERO =
   "https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?auto=format&fit=crop&w=2000&q=80";
 const STUDIO =
   "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1800&q=80";
 
-// separate films / videography site (placeholder until it's live)
 const STUDIO_URL = "https://studio.anointedhustlaz.store";
 
 export default function Home() {
@@ -35,12 +37,16 @@ export default function Home() {
             Aim <em>true.</em>
           </h1>
           <div className="hero-actions">
-            <Link href="/shop" className="btn btn-ghost">
-              <span>Shop the drop</span>
-            </Link>
-            <Link href="/lookbook" className="btn btn-ghost">
-              <span>Lookbook</span>
-            </Link>
+            <Magnetic>
+              <Link href="/shop" className="btn btn-ghost">
+                <span>Shop the drop</span>
+              </Link>
+            </Magnetic>
+            <Magnetic>
+              <Link href="/lookbook" className="btn btn-ghost">
+                <span>Lookbook</span>
+              </Link>
+            </Magnetic>
           </div>
         </div>
         <div className="scroll-cue" aria-hidden>
@@ -65,21 +71,81 @@ export default function Home() {
 
       {/* FEATURED */}
       <section className="section container">
-        <Reveal className="section-head">
+        <div className="section-head">
           <div>
-            <span className="label label-accent">The Drop</span>
-            <h2 className="display">Featured pieces</h2>
+            <Reveal>
+              <span className="label label-accent">The Drop</span>
+            </Reveal>
+            <MaskText as="h2" className="display">
+              Featured pieces
+            </MaskText>
           </div>
           <Link href="/shop" className="label link-underline">
             View all →
           </Link>
-        </Reveal>
+        </div>
         <div className="grid-ed">
           <ProductCard product={feat[0]} className="wide tall" />
           <ProductCard product={feat[1]} className="wide tall" />
           {feat.slice(2, 5).map((p) => (
             <ProductCard key={p.slug} product={p} />
           ))}
+        </div>
+      </section>
+
+      {/* BRAND STORY */}
+      <section className="section container story">
+        <Reveal className="story-eyebrow">
+          <span className="ln" />
+          <span className="label label-accent">The Ethos</span>
+        </Reveal>
+        <MaskText as="h2" className="story-statement">
+          We don’t chase the trend. We take aim — and <em>hold it.</em>
+        </MaskText>
+        <div className="story-cols">
+          <Reveal>
+            <p className="lead">
+              AnointedHustlaz is streetwear for people who move with intent.
+              Heavyweight cottons, considered cuts, and a monochrome language
+              that lets the wearer do the talking.
+            </p>
+          </Reveal>
+          <Reveal delay={120}>
+            <p>
+              Every piece is made in small runs out of South Africa — designed
+              to outlast the season, worn until it earns its creases. No noise.
+              No filler. Just the drop, done right.
+            </p>
+          </Reveal>
+        </div>
+
+        <div className="stats">
+          <div className="stat">
+            <span className="n">
+              <CountUp to={11} />
+            </span>
+            <div className="label k">Years deep</div>
+          </div>
+          <div className="stat">
+            <span className="n">
+              <CountUp to={8097} />
+            </span>
+            <div className="label k">Community</div>
+          </div>
+          <div className="stat">
+            <span className="n">
+              <CountUp to={240} />
+              <small>gsm</small>
+            </span>
+            <div className="label k">Cotton weight</div>
+          </div>
+          <div className="stat">
+            <span className="n">
+              <CountUp to={100} />
+              <small>%</small>
+            </span>
+            <div className="label k">Made in Mzansi</div>
+          </div>
         </div>
       </section>
 
@@ -90,39 +156,45 @@ export default function Home() {
           <img src={STUDIO} alt="AnointedHustlaz Studio" />
         </Reveal>
         <div className="container studio-in">
-          <span className="label studio-tag">
-            ✦ &nbsp;The Studio &nbsp;✦
-          </span>
-          <h2 className="display">
+          <span className="label studio-tag">✦ &nbsp;The Studio &nbsp;✦</span>
+          <MaskText as="h2" className="display">
             The lens behind <em>the label.</em>
-          </h2>
-          <p>
-            AnointedHustlaz started behind a camera. The short films, music
-            videos and photography now live in their own space — same eye,
-            bigger screen.
-          </p>
-          <a
-            href={STUDIO_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn-outline"
-          >
-            <span>Enter the Studio ↗</span>
-          </a>
+          </MaskText>
+          <Reveal>
+            <p>
+              AnointedHustlaz started behind a camera. The short films, music
+              videos and photography now live in their own space — same eye,
+              bigger screen.
+            </p>
+          </Reveal>
+          <Magnetic>
+            <a
+              href={STUDIO_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-outline"
+            >
+              <span>Enter the Studio ↗</span>
+            </a>
+          </Magnetic>
         </div>
       </section>
 
       {/* MORE GRID */}
       <section className="section container">
-        <Reveal className="section-head">
+        <div className="section-head">
           <div>
-            <span className="label label-accent">In Stock</span>
-            <h2 className="display">The full range</h2>
+            <Reveal>
+              <span className="label label-accent">In Stock</span>
+            </Reveal>
+            <MaskText as="h2" className="display">
+              The full range
+            </MaskText>
           </div>
           <Link href="/shop" className="label link-underline">
             Shop all →
           </Link>
-        </Reveal>
+        </div>
         <div className="grid-ed">
           {grid.map((p) => (
             <ProductCard key={p.slug} product={p} />

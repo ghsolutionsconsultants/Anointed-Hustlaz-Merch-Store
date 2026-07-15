@@ -8,6 +8,9 @@ import { Footer } from "@/components/footer";
 import { InlineScript } from "@/components/inline-script";
 import { IntroCurtain } from "@/components/intro-curtain";
 import { ScrollFX } from "@/components/scroll-fx";
+import { SmoothScroll } from "@/components/smooth-scroll";
+import { Cursor } from "@/components/cursor";
+import { ScrollProgress } from "@/components/scroll-progress";
 
 const bodoni = Bodoni_Moda({
   variable: "--font-bodoni",
@@ -46,7 +49,10 @@ export default function RootLayout({
       </head>
       <body>
         <IntroCurtain />
+        <SmoothScroll />
         <ScrollFX />
+        <ScrollProgress />
+        <Cursor />
         <CartProvider>
           <Header />
           <main>{children}</main>

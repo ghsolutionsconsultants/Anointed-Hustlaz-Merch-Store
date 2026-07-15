@@ -11,7 +11,12 @@ export function ProductCard({
 }) {
   const [primary, secondary] = product.images;
   return (
-    <Link href={`/product/${product.slug}`} className={`card ${className}`.trim()}>
+    <Link
+      href={`/product/${product.slug}`}
+      className={`card ${className}`.trim()}
+      data-cursor
+      data-cursor-label="View"
+    >
       <div className="card-media">
         {product.soldOut && <span className="card-tag sold">Sold Out</span>}
         {product.feature && !product.soldOut && (
@@ -28,6 +33,17 @@ export function ProductCard({
             loading="lazy"
           />
         )}
+        <span className="card-arrow" aria-hidden>
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
+            <path
+              d="M4 12L12 4M12 4H5M12 4V11"
+              stroke="currentColor"
+              strokeWidth="1.4"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </span>
       </div>
       <div className="card-row">
         <div>
