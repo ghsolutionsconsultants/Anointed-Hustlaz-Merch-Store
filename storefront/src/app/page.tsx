@@ -5,8 +5,11 @@ import { Reveal } from "@/components/reveal";
 
 const HERO =
   "https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?auto=format&fit=crop&w=2000&q=80";
-const LOOK =
-  "https://images.unsplash.com/photo-1516762689617-e1cffcef479d?auto=format&fit=crop&w=1400&q=80";
+const STUDIO =
+  "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1800&q=80";
+
+// separate films / videography site (placeholder until it's live)
+const STUDIO_URL = "https://studio.anointedhustlaz.store";
 
 export default function Home() {
   const feat = featured().slice(0, 5);
@@ -16,8 +19,16 @@ export default function Home() {
     <>
       {/* HERO */}
       <section className="hero">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={HERO} alt="AnointedHustlaz Winter drop" />
+        <div className="hero-media">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={HERO} alt="AnointedHustlaz Winter drop" />
+        </div>
+        <div className="frame-ticks" aria-hidden>
+          <span className="tl" />
+          <span className="tr" />
+          <span className="bl" />
+          <span className="br" />
+        </div>
         <div className="hero-copy">
           <span className="label kick">Drop 03 — Winter ’26</span>
           <h1 className="display">
@@ -25,12 +36,16 @@ export default function Home() {
           </h1>
           <div className="hero-actions">
             <Link href="/shop" className="btn btn-ghost">
-              Shop the drop
+              <span>Shop the drop</span>
             </Link>
             <Link href="/lookbook" className="btn btn-ghost">
-              Lookbook
+              <span>Lookbook</span>
             </Link>
           </div>
+        </div>
+        <div className="scroll-cue" aria-hidden>
+          <div className="bar" />
+          <span>Scroll</span>
         </div>
       </section>
 
@@ -39,9 +54,10 @@ export default function Home() {
         <div className="marquee">
           {Array.from({ length: 2 }).map((_, k) => (
             <span key={k}>
-              STS Clothing&nbsp;&nbsp;&nbsp;Short Films&nbsp;&nbsp;&nbsp;EST.
+              STS Clothing&nbsp;&nbsp;&nbsp;Heavyweight
+              Cotton&nbsp;&nbsp;&nbsp;EST.
               2015&nbsp;&nbsp;&nbsp;Anointed&nbsp;Hustlaz&nbsp;&nbsp;&nbsp;Made
-              in&nbsp;Mzansi&nbsp;&nbsp;&nbsp;
+              in&nbsp;Mzansi&nbsp;&nbsp;&nbsp;Aim&nbsp;True&nbsp;&nbsp;&nbsp;
             </span>
           ))}
         </div>
@@ -54,7 +70,7 @@ export default function Home() {
             <span className="label label-accent">The Drop</span>
             <h2 className="display">Featured pieces</h2>
           </div>
-          <Link href="/shop" className="label">
+          <Link href="/shop" className="label link-underline">
             View all →
           </Link>
         </Reveal>
@@ -67,25 +83,32 @@ export default function Home() {
         </div>
       </section>
 
-      {/* LOOKBOOK SPLIT */}
-      <section className="split">
-        <div className="split-media">
+      {/* STUDIO CTA — the films/videography live on their own site */}
+      <section className="studio">
+        <Reveal className="studio-media" variant="clip">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={LOOK} alt="Short Films lookbook" />
-        </div>
-        <div className="split-copy">
-          <span className="label label-accent">Short Films</span>
+          <img src={STUDIO} alt="AnointedHustlaz Studio" />
+        </Reveal>
+        <div className="container studio-in">
+          <span className="label studio-tag">
+            ✦ &nbsp;The Studio &nbsp;✦
+          </span>
           <h2 className="display">
-            Worn on <em>set.</em>
+            The lens behind <em>the label.</em>
           </h2>
           <p>
-            Every drop is shot the way it’s meant to be seen — on the streets of
-            Joburg, in motion, under real light. The clothing is the cast; the
-            city is the frame.
+            AnointedHustlaz started behind a camera. The short films, music
+            videos and photography now live in their own space — same eye,
+            bigger screen.
           </p>
-          <Link href="/lookbook" className="btn" style={{ width: "fit-content" }}>
-            Watch the lookbook
-          </Link>
+          <a
+            href={STUDIO_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-outline"
+          >
+            <span>Enter the Studio ↗</span>
+          </a>
         </div>
       </section>
 
@@ -96,7 +119,7 @@ export default function Home() {
             <span className="label label-accent">In Stock</span>
             <h2 className="display">The full range</h2>
           </div>
-          <Link href="/shop" className="label">
+          <Link href="/shop" className="label link-underline">
             Shop all →
           </Link>
         </Reveal>

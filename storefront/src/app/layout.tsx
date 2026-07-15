@@ -6,6 +6,8 @@ import { CartDrawer } from "@/components/cart-drawer";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { InlineScript } from "@/components/inline-script";
+import { IntroCurtain } from "@/components/intro-curtain";
+import { ScrollFX } from "@/components/scroll-fx";
 
 const bodoni = Bodoni_Moda({
   variable: "--font-bodoni",
@@ -23,7 +25,7 @@ const archivo = Archivo({
 export const metadata: Metadata = {
   title: "AnointedHustlaz — STS Clothing",
   description:
-    "Streetwear and short films out of South Africa. Shop the AnointedHustlaz / STS Clothing drop.",
+    "Streetwear out of South Africa. Shop the AnointedHustlaz / STS Clothing drop. Aim true.",
 };
 
 const themeScript = `(function(){try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}})()`;
@@ -43,6 +45,8 @@ export default function RootLayout({
         <InlineScript html={themeScript} />
       </head>
       <body>
+        <IntroCurtain />
+        <ScrollFX />
         <CartProvider>
           <Header />
           <main>{children}</main>

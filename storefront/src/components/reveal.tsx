@@ -6,11 +6,13 @@ export function Reveal({
   children,
   as: Tag = "div",
   className = "",
+  variant = "fade",
   delay = 0,
 }: {
   children: React.ReactNode;
   as?: React.ElementType;
   className?: string;
+  variant?: "fade" | "clip";
   delay?: number;
 }) {
   const ref = useRef<HTMLElement>(null);
@@ -34,10 +36,11 @@ export function Reveal({
     return () => io.disconnect();
   }, []);
 
+  const base = variant === "clip" ? "reveal-clip" : "reveal";
   return (
     <Tag
       ref={ref}
-      className={`reveal${shown ? " in" : ""} ${className}`.trim()}
+      className={`${base}${shown ? " in" : ""} ${className}`.trim()}
       style={delay ? { transitionDelay: `${delay}ms` } : undefined}
     >
       {children}

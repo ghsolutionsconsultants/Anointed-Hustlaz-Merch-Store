@@ -9,8 +9,8 @@ export function Footer() {
             Anointed<em>Hustlaz</em>
           </div>
           <p style={{ marginTop: 14 }}>
-            Streetwear &amp; short films out of South Africa. STS Clothing —
-            established 2015.
+            Streetwear out of South Africa. STS Clothing — established 2015.
+            Aim true.
           </p>
         </div>
         <div>
@@ -23,12 +23,20 @@ export function Footer() {
           </ul>
         </div>
         <div>
-          <h4>Help</h4>
+          <h4>More</h4>
           <ul>
             <li><Link href="/lookbook">Lookbook</Link></li>
+            <li>
+              <a
+                href="https://studio.anointedhustlaz.store"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                The Studio ↗
+              </a>
+            </li>
             <li><Link href="/shop">Shipping</Link></li>
             <li><Link href="/shop">Returns</Link></li>
-            <li><Link href="/shop">Size Guide</Link></li>
           </ul>
         </div>
         <div>
