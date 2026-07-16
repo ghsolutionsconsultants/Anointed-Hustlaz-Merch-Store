@@ -176,15 +176,23 @@ button { font-family: inherit; cursor: pointer; }
 .grid-ed {
   display: grid; grid-template-columns: repeat(12, 1fr);
   gap: clamp(28px, 4vw, 64px) clamp(18px, 2.4vw, 40px);
+  align-items: start;
 }
 .card { grid-column: span 6; display: flex; flex-direction: column; }
+.card.c4 { grid-column: span 4; }
+.card.c5 { grid-column: span 5; }
+.card.c6 { grid-column: span 6; }
+.card.c7 { grid-column: span 7; }
+.card.c8 { grid-column: span 8; }
 .card.wide { grid-column: span 6; }
-.card.tall .card-media { aspect-ratio: 4 / 5.2; }
 .card.full { grid-column: span 12; }
 .card-media {
   position: relative; aspect-ratio: 4 / 5; overflow: hidden;
   background: var(--surface-2); margin-bottom: 18px;
 }
+.card.tall .card-media { aspect-ratio: 4 / 5.2; }
+.card.xtall .card-media { aspect-ratio: 3 / 4.4; }
+.card.short .card-media { aspect-ratio: 4 / 3.3; }
 .card-media img {
   position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
   transition: transform .9s cubic-bezier(.2,.7,.2,1), opacity .5s;
@@ -303,8 +311,9 @@ button { font-family: inherit; cursor: pointer; }
   .nav-links { display: none; }
   /* keep the base 1fr auto 1fr grid so the logo stays screen-centred */
   .brand { justify-self: center; }
-  .card, .card.wide { grid-column: span 6; }
-  .card.tall .card-media { aspect-ratio: 4 / 5; }
+  /* normalise the varied desktop spans back to a clean 2-up on phones */
+  .card, .card.wide, .card.c4, .card.c5, .card.c6, .card.c7, .card.c8 { grid-column: span 6; }
+  .card.tall .card-media, .card.xtall .card-media, .card.short .card-media { aspect-ratio: 4 / 5; }
   .brand .word { display: none; }
 }
 @media (max-width: 480px) {
@@ -563,6 +572,10 @@ html.lenis, html.lenis body { height: auto; }
   .card.feature .card-media { aspect-ratio: 4 / 4.6; }
   .card.feature .card-cap { flex-direction: column; align-items: flex-start; gap: 10px; }
   .campaign { height: min(84vh, 680px); }
+  /* remove hero flourishes that crowd the copy on phones */
+  .scroll-cue { display: none; }
+  .frame-ticks { display: none; }
+  .hero-copy { bottom: clamp(28px, 6vw, 48px); }
 }
 @media (max-width: 560px) {
   .grid-ed { gap: clamp(24px, 6vw, 40px) 14px; }

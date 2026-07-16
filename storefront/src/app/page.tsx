@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { featured, byCollection } from "@/lib/mock-products";
 import { ProductCard } from "@/components/product-card";
+import { cardLayout } from "@/lib/card-layout";
 import { Reveal } from "@/components/reveal";
 import { MaskText } from "@/components/mask-text";
 import { Magnetic } from "@/components/magnetic";
@@ -222,8 +223,12 @@ export default function Home() {
           </Link>
         </div>
         <div className="grid-ed">
-          {grid.map((p) => (
-            <ProductCard key={p.slug} product={p} />
+          {grid.map((p, i) => (
+            <ProductCard
+              key={p.slug}
+              product={p}
+              className={cardLayout(i, grid.length, false).cls}
+            />
           ))}
         </div>
       </section>

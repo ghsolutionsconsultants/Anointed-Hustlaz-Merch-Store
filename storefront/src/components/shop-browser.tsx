@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { COLLECTIONS, byCollection } from "@/lib/mock-products";
+import { cardLayout } from "@/lib/card-layout";
 import { ProductCard } from "./product-card";
 
 const FILTERS = ["All", ...COLLECTIONS] as const;
@@ -49,14 +50,14 @@ export function ShopBrowser() {
       </nav>
 
       <div className="grid-ed">
-        {products.map((p, i) =>
-          // lead each collection with a full-width editorial feature
-          i === 0 && products.length > 2 ? (
+        {products.map((p, i) => {
+          const l = cardLayout(i, products.length);
+          return l.feature ? (
             <ProductCard key={p.slug} product={p} variant="feature" />
           ) : (
-            <ProductCard key={p.slug} product={p} className="tall" />
-          ),
-        )}
+            <ProductCard key={p.slug} product={p} className={l.cls} />
+          );
+        })}
       </div>
     </>
   );
