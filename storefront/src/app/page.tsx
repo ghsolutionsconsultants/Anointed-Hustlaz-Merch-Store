@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { featured, byCollection } from "@/lib/mock-products";
 import { ProductCard } from "@/components/product-card";
-import { cardLayout } from "@/lib/card-layout";
+import { buildLayout } from "@/lib/card-layout";
 import { Reveal } from "@/components/reveal";
 import { MaskText } from "@/components/mask-text";
 import { Magnetic } from "@/components/magnetic";
@@ -19,6 +19,8 @@ const STUDIO_URL = "https://studio.anointedhustlaz.store";
 export default function Home() {
   const feat = featured().slice(0, 5);
   const grid = byCollection("All").slice(0, 6);
+  const featSizes = buildLayout(feat.length);
+  const gridSizes = buildLayout(grid.length);
 
   return (
     <>
@@ -88,9 +90,12 @@ export default function Home() {
           </Link>
         </div>
         <div className="grid-ed">
-          <ProductCard product={feat[0]} variant="feature" />
-          {feat.slice(1, 5).map((p) => (
-            <ProductCard key={p.slug} product={p} className="tall" />
+          {feat.map((p, i) => (
+            <ProductCard
+              key={p.slug}
+              product={p}
+              className={`size-${featSizes[i]}`}
+            />
           ))}
         </div>
       </section>
@@ -227,7 +232,7 @@ export default function Home() {
             <ProductCard
               key={p.slug}
               product={p}
-              className={cardLayout(i, grid.length, false).cls}
+              className={`size-${gridSizes[i]}`}
             />
           ))}
         </div>
