@@ -576,10 +576,13 @@ html.lenis, html.lenis body { height: auto; }
   .card.feature .card-media { aspect-ratio: 4 / 4.6; }
   .card.feature .card-cap { flex-direction: column; align-items: flex-start; gap: 10px; }
   .campaign { height: min(84vh, 680px); }
-  /* remove hero flourishes that crowd the copy on phones */
+  /* the scroll cue collided with the buttons — keep it hidden on phones */
   .scroll-cue { display: none; }
-  .frame-ticks { display: none; }
-  .hero-copy { bottom: clamp(28px, 6vw, 48px); }
+  /* keep the viewfinder "aim" frame; tighten it to the edges and raise the
+     copy so the bottom corners never overlap the buttons */
+  .frame-ticks { inset: 14px; }
+  .frame-ticks span { width: 18px; height: 18px; }
+  .hero-copy { bottom: clamp(60px, 15vw, 96px); }
 }
 @media (max-width: 560px) {
   /* phones: one large full-width card per row (Zara "large view") — no gaps */
